@@ -158,3 +158,8 @@ input:checked + .slider:before {
   font-size: 10em;
   margin: 0;
 }
+
+.wind-humidity-icon {
+  font-family: artill;
+  font-size: 2em;
+}

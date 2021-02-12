@@ -12,6 +12,7 @@ const cityNameInput = document.querySelector('.city-search-input');
 const citySubmit = document.querySelector('.city-search-btn');
 const toggleSelector = document.querySelector('.slider');
 const toggleInput = document.querySelector('.toggle-input');
+const weatherIcon = document.querySelector('.weather-icon');
 
 const renderError = (error) => {
   let errorDisplay = document.createElement("div");
@@ -61,7 +62,24 @@ const renderWeather = (object) => {
 
   humidity.textContent = object.main.humidity;
   windSpeed.textContent = object.wind.speed;
+
+  console.log(object);
   
+  if (object.weather[0].description === "light rain") {
+    weatherIcon.textContent = "f";
+  } else if (object.weather[0].description === "scattered clouds") {
+    weatherIcon.textContent = "3";
+  } else if (object.weather[0].description === "clear sky") {
+    weatherIcon.textContent = "1";
+  } else if (object.weather[0].description === "few clouds") {
+    weatherIcon.textContent = "a";
+  } else if (object.weather[0].description === "moderate rain") {
+    weatherIcon.textContent = "i";
+  } else if (object.weather[0].description === "heavy intensity rain") {
+    weatherIcon.textContent = "u";
+  } else {
+    weatherIcon.textContent = "p";
+  }
 };
 
 const getWeather = (latVar, longVar) => {
