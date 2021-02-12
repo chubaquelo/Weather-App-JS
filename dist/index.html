@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App with Javascript API</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <div class="weather-container">
+      <div class="scale-toggle">
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider">
+            <p>°C</p>
+            <p>°F</p>
+          </span>
+        </label>
+      </div>
+      <h1>The weather in <span class="city">City</span></h1>
+      <div class="search-bar-container">
+        <input class="city-search-input" type="text" placeholder="Look up a city...">
+        <button class="city-search-btn" type="button">Search</button>
+      </div>
+      <div class="weather-info-container">
+        <div class="weather-left">
+          <i></i>
+          <p><span class="current-temperature"></span><span class="scale"></span></p>
+        </div>
+        <div class="weather-right">
+          <p>Max: <span class="max-temp"></span><span class="scale"></span></p>
+          <p>Min: <span class="min-temp"></span><span class="scale"></span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./bundle.js"></script>
+</body>
+</html>

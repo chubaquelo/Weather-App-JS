@@ -1,0 +1,25 @@
+{
+  "name": "weather-app-js",
+  "version": "1.0.0",
+  "description": "Weather App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chubaquelo/Weather-App-JS.git"
+  },
+  "author": "Sergio Obolevich <sergioobolevich@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chubaquelo/Weather-App-JS/issues"
+  },
+  "homepage": "https://github.com/chubaquelo/Weather-App-JS#readme",
+  "devDependencies": {
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
