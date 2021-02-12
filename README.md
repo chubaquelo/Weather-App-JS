@@ -1,7 +1,9 @@
 # Weather App using API with Javascript and Webpack
 
 > This is a weather application built with plain javascript and webpack. It's shows weather on your city and let's you search also.
+> I have use http://openweathermap.org/ API on this project.
 
+![](https://i.imgur.com/KTpq40D.jpeg)
 
 ## Built With
 
