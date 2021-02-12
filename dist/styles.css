@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'artill';
+  src: url('./artill_clean_icons.otf') format('opentype');
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url(./img/bg.jpg);
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 80%;
+  height: 450px;
+  background-color: #0000003d;
+  backdrop-filter: blur(10px);
+  box-shadow: grey;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 3em;
+  margin: 20px 0;
+}
+
+.city-search-input {
+  font-size: 25px;
+  padding: 5px;
+  margin-right: 0;
+  display: inline;
+  border-width: 0;
+}
+
+.city-search-btn {
+  font-size: 25px;
+  padding: 5px;
+  margin-left: 0;
+  display: inline;
+  cursor: pointer;
+  border-width: 0;
+}
+
+.weather-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-info-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.weather-left, 
+.weather-right {
+  margin-top: 10px;
+  flex-basis: 48%;
+  height: 250px;
+  text-align: center;
+  color: #fff;
+}
+
+.current-temperature {
+  font-size: 5em;
+}
+
+.scale-toggle {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 25px;
+  top: 25px;
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.weather-right > p {
+  font-size: 1.5em;
+}
+
+
+switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  width: 25px;
+  height: 25px;
+}
+
+.error-display {
+  background-color: #fff;
+  text-align: center;
+  color: red;
+  width: 100vw;
+  position: absolute;
+  top: 25px;
+}
+
+.weather-icon {
+  position: relative;
+  bottom: 75px;
+  font-family: artill;
+  font-size: 10em;
+  margin: 0;
+}
+
+.wind-humidity-icon {
+  font-family: artill;
+  font-size: 2em;
+}
