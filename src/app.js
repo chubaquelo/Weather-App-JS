@@ -6,6 +6,7 @@ const currentTemp = document.querySelector('.current-temperature');
 const scale = document.querySelectorAll('.scale');
 const maxTemp = document.querySelector('.max-temp');
 const minTemp = document.querySelector('.min-temp');
+const humidity = document.querySelector('.humidity');
 const windSpeed = document.querySelector('.wind-speed');
 const cityNameInput = document.querySelector('.city-search-input');
 const citySubmit = document.querySelector('.city-search-btn');
@@ -19,33 +20,48 @@ const renderError = (error) => {
   body.appendChild(errorDisplay);
 };
 
-const toggleKorC = () => {
+const toggleScale = () => {
   if (toggleInput.checked === true) {
-    floatCurrentTemp = (parseFloat(currentTemp.textContent) + 273.15).toFixed(2);
-    floatMaxTemp = (parseFloat(maxTemp.textContent) + 273.15).toFixed(2);
-    floatMinTemp = (parseFloat(minTemp.textContent) + 273.15).toFixed(2);
-    currentTemp.textContent = floatCurrentTemp.toString();
-    maxTemp.textContent = floatMaxTemp.toString();
-    minTemp.textContent = floatMinTemp.toString();
+    currentTemp.textContent = cToKelvin(currentTemp.textContent);
+    maxTemp.textContent = cToKelvin(maxTemp.textContent);
+    minTemp.textContent = cToKelvin(minTemp.textContent);
     scale.forEach((el) => (el.textContent = " °K"));
   } else {
-    floatCurrentTemp = (parseFloat(currentTemp.textContent) - 273.15).toFixed(2);
-    floatMaxTemp = (parseFloat(maxTemp.textContent) - 273.15).toFixed(2);
-    floatMinTemp = (parseFloat(minTemp.textContent) - 273.15).toFixed(2);
-    currentTemp.textContent = floatCurrentTemp.toString();
-    maxTemp.textContent = floatMaxTemp.toString();
-    minTemp.textContent = floatMinTemp.toString();
+    currentTemp.textContent = kToCelsius(currentTemp.textContent);
+    maxTemp.textContent = kToCelsius(maxTemp.textContent);
+    minTemp.textContent = kToCelsius(minTemp.textContent);
     scale.forEach((el) => (el.textContent = " °C"));
   }
 }
 
+const kToCelsius = (kTemp) => {
+  return (parseFloat(kTemp) - 273.15).toFixed(2);
+}
+
+const cToKelvin = (cTemp) => {
+  return (parseFloat(cTemp) + 273.15).toFixed(2);
+};
+
 const renderWeather = (object) => {
   if (document.querySelector('.error-display')) { body.removeChild(document.querySelector(".error-display")) };
+  
   cityName.textContent = object.name + ", " + object.sys.country;
-  currentTemp.textContent = object.main.temp;
-  scale.forEach(el => el.textContent = " °K");
-  maxTemp.textContent = object.main.temp_max;
-  minTemp.textContent = object.main.temp_min;
+  
+  if (toggleInput.checked === true) {
+    currentTemp.textContent = kToCelsius(object.main.temp);
+    maxTemp.textContent = kToCelsius(object.main.temp_max);
+    minTemp.textContent = kToCelsius(object.main.temp_min);
+    scale.forEach((el) => (el.textContent = " °C"));
+  } else {
+    currentTemp.textContent = object.main.temp;
+    maxTemp.textContent = object.main.temp_max;
+    minTemp.textContent = object.main.temp_min;
+    scale.forEach((el) => (el.textContent = " °K"));
+  }
+
+  humidity.textContent = object.main.humidity;
+  windSpeed.textContent = object.wind.speed;
+  
 };
 
 const getWeather = (latVar, longVar) => {
@@ -97,6 +113,6 @@ cityNameInput.addEventListener("keyup", function(event) {
    }, 1000);
 });
 
-toggleSelector.addEventListener("click", toggleKorC);
+toggleSelector.addEventListener("click", toggleScale);
 
 getLocation();

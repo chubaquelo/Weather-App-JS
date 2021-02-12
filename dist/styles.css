@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'artill';
+  src: url('./artill_clean_icons.otf') format('opentype');
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -67,7 +72,6 @@ h1 {
   margin-top: 10px;
   flex-basis: 48%;
   height: 250px;
-  border: dashed 2px #ccc;
   text-align: center;
   color: #fff;
 }
@@ -86,7 +90,7 @@ h1 {
 }
 
 .weather-right > p {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 
@@ -145,4 +149,12 @@ input:checked + .slider:before {
   width: 100vw;
   position: absolute;
   top: 25px;
+}
+
+.weather-icon {
+  position: relative;
+  bottom: 75px;
+  font-family: artill;
+  font-size: 10em;
+  margin: 0;
 }
