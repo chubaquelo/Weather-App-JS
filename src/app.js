@@ -9,11 +9,41 @@ const minTemp = document.querySelector('.min-temp');
 const windSpeed = document.querySelector('.wind-speed');
 const cityNameInput = document.querySelector('.city-search-input');
 const citySubmit = document.querySelector('.city-search-btn');
+const toggleSelector = document.querySelector('.slider');
+const toggleInput = document.querySelector('.toggle-input');
+
+const renderError = (error) => {
+  let errorDisplay = document.createElement("div");
+  errorDisplay.className = "error-display";
+  errorDisplay.textContent = "ERROR: City was not found. Try again.";
+  body.appendChild(errorDisplay);
+};
+
+const toggleKorC = () => {
+  if (toggleInput.checked === true) {
+    floatCurrentTemp = (parseFloat(currentTemp.textContent) + 273.15).toFixed(2);
+    floatMaxTemp = (parseFloat(maxTemp.textContent) + 273.15).toFixed(2);
+    floatMinTemp = (parseFloat(minTemp.textContent) + 273.15).toFixed(2);
+    currentTemp.textContent = floatCurrentTemp.toString();
+    maxTemp.textContent = floatMaxTemp.toString();
+    minTemp.textContent = floatMinTemp.toString();
+    scale.forEach((el) => (el.textContent = " °K"));
+  } else {
+    floatCurrentTemp = (parseFloat(currentTemp.textContent) - 273.15).toFixed(2);
+    floatMaxTemp = (parseFloat(maxTemp.textContent) - 273.15).toFixed(2);
+    floatMinTemp = (parseFloat(minTemp.textContent) - 273.15).toFixed(2);
+    currentTemp.textContent = floatCurrentTemp.toString();
+    maxTemp.textContent = floatMaxTemp.toString();
+    minTemp.textContent = floatMinTemp.toString();
+    scale.forEach((el) => (el.textContent = " °C"));
+  }
+}
 
 const renderWeather = (object) => {
+  if (document.querySelector('.error-display')) { body.removeChild(document.querySelector(".error-display")) };
   cityName.textContent = object.name + ", " + object.sys.country;
   currentTemp.textContent = object.main.temp;
-  scale.forEach(el => el.textContent = " °F");
+  scale.forEach(el => el.textContent = " °K");
   maxTemp.textContent = object.main.temp_max;
   minTemp.textContent = object.main.temp_min;
 };
@@ -53,9 +83,20 @@ const loadCityData = () => {
   )
     .then((result) => result.json())
     .then((object) => renderWeather(object))
-    .catch((error) => console.log(error));
+    .catch((error) => renderError(error));
 }
 
 
 citySubmit.addEventListener('click', loadCityData);
+
+let timeout = null;
+cityNameInput.addEventListener("keyup", function(event) {
+  clearTimeout(timeout);
+   timeout = setTimeout(function () {
+    citySubmit.click();
+   }, 1000);
+});
+
+toggleSelector.addEventListener("click", toggleKorC);
+
 getLocation();

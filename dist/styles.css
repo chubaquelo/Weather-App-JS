@@ -33,6 +33,7 @@ h1 {
   padding: 5px;
   margin-right: 0;
   display: inline;
+  border-width: 0;
 }
 
 .city-search-btn {
@@ -41,6 +42,7 @@ h1 {
   margin-left: 0;
   display: inline;
   cursor: pointer;
+  border-width: 0;
 }
 
 .weather-container {
@@ -134,4 +136,13 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+
+.error-display {
+  background-color: #fff;
+  text-align: center;
+  color: red;
+  width: 100vw;
+  position: absolute;
+  top: 25px;
 }
